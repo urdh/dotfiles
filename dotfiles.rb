@@ -110,6 +110,7 @@ class DotfileDSL
 			next nil unless r.match(file)
 			abs_file = File.absolute_path("#{@sourcepath}/#{file}")
 			thistarget = r.match(file)[group] or 'generic'
+			thistarget = 'generic' if group == 0
 			merge[thistarget] = [] unless merge[thistarget]
 			merge[thistarget] << abs_file unless File.directory?(abs_file)
 			puts "\e[31mWARNING:\e[0m Will not merge folder #{file}" if File.directory?(abs_file)
