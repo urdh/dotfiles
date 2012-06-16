@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# See README.md for more information on this file
+
+# Ignore temporary files. Run first!
+ignore  '(.*)~$'
+ignore  '^#(.*)#$'
+
+# Catch-all rules for merges and symlinks. Run last!
+ignore  '[^/]*/([^/]*).merge$'
+merge   '[^/]*/([^/]*).merge/[^/]*', '.$1'
+symlink '[^/]*/([^/]*).symlink',     '.$1'
