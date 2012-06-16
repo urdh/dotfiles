@@ -6,6 +6,6 @@ ignore  '(.*)~$'
 ignore  '^#(.*)#$'
 
 # Catch-all rules for merges and symlinks. Run last!
-ignore  '[^/]*/([^/]*).merge$'
-merge   '[^/]*/([^/]*).merge/[^/]*', '.$1'
-symlink '[^/]*/([^/]*).symlink',     '.$1'
+ignore  '[^/]*/([^/]*)\.merge$'
+merge   '[^/]*/([^/]*)\.merge/[^/]*', '.$1'
+symlink '[^/]*/([^/]*)\.symlink$',    '.$1'
