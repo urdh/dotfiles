@@ -26,7 +26,7 @@ class DotfileDSL
 		# Defaults
 		defaults = {
 			:source  => "#{Dir.home}/.dotfiles",
-			:dest    => "#{Dir.home}/Desktop/dotfiles",
+			:dest    => Dir.home,
 			:verbose => false,
 			:quiet   => false,
 			:rules   => "#{Dir.home}/.dotfiles/Rules"
