@@ -156,7 +156,6 @@ class DotfileDSL
 			end
 			File.unlink(abs_target) if File.symlink?(abs_target) and not @dry
 			flag = @used_targets.include?(abs_target) ? 'w+' : 'w'
-			puts flag, merge
 			File.open(abs_target, flag) do |out|
 				merge.each do |source|
 					out.write(File.read(source))
