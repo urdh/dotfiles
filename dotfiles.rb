@@ -39,6 +39,7 @@ class DotfileDSL
 		@quiet = options[:quiet]
 		@rules = options[:rules]
 		@dry = options[:dry]
+		@debug = options[:debug]
 		# Variables
 		@oldpwd = Dir.pwd
 		Dir.chdir(@sourcepath)
@@ -61,6 +62,10 @@ class DotfileDSL
 		end
 		puts "#{@unhandled_files.length} unprocessed sources." if @verbose
 		Dir.chdir(@oldpwd)
+		if @debug
+			puts "\e[31mUnprocessed sources:\e[0m"
+			@unhandled_files.each{ |file| puts file }
+		end
 	end
 
 	def ignore(regex)
@@ -171,6 +176,10 @@ class DotfileCLI
 				@options[:dry] = true
 				@options[:quiet] = false
 				@options[:verbose] = true
+			end
+			# Debug
+			opts.on('-d', '--debug', "Print debug information") do
+				@options[:debug] = true
 			end
 			# Help
 			opts.on('-h', '--help', "Display this screen") do
