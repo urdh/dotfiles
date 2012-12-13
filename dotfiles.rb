@@ -38,6 +38,7 @@ class DotfileDSL
 		@verbose = options[:verbose]
 		@quiet = options[:quiet]
 		@rules = options[:rules]
+		@dry = options[:dry]
 		# Variables
 		@oldpwd = Dir.pwd
 		Dir.chdir(@sourcepath)
@@ -52,11 +53,11 @@ class DotfileDSL
 	end
 
 	def finalize()
-		File.open(File.absolute_path("#{@sourcepath}/.safe-targets"), 'w'){ |f| f.puts @used_targets }
+		File.open(File.absolute_path("#{@sourcepath}/.safe-targets"), 'w'){ |f| f.puts @used_targets } unless @dry
 		(@safe_targets - @used_targets).each do |file|
 			file = file.sub("#{@destpath}/", '')
 			puts "\e[33mREMOVE: \e[0m ~/#{file} wasn't regenerated" if @verbose
-			File.unlink(File.absolute_path("#{@destpath}/#{file}"))
+			File.unlink(File.absolute_path("#{@destpath}/#{file}")) unless @dry
 		end
 		puts "#{@unhandled_files.length} unprocessed sources." if @verbose
 		Dir.chdir(@oldpwd)
@@ -94,10 +95,10 @@ class DotfileDSL
 					puts "         Please check your rules file for inconsistencies."
 					next true
 				else
-					File.unlink(abs_target)
+					File.unlink(abs_target) unless @dry
 				end
 			end
-			File.symlink(abs_source, abs_target)
+			File.symlink(abs_source, abs_target) unless @dry
 			@used_targets << abs_target
 			next true
 		end
@@ -135,13 +136,13 @@ class DotfileDSL
 				puts "         Please check your rules file for inconsistencies."
 				return true
 			end
-			File.unlink(abs_target) if File.symlink?(abs_target)
+			File.unlink(abs_target) if File.symlink?(abs_target) and !@dry
 			File.open(abs_target, 'w') do |out|
 				merge.each do |source|
 					out.write(File.read(source))
 					out.write("\n\n")
 				end
-			end
+			end unless @dry
 			@used_targets << abs_target
 		end
 	end
@@ -164,6 +165,12 @@ class DotfileCLI
 			opts.on('-q', '--quiet', "Be completely silent") do
 				@options[:quiet] = true
 				@options[:verbose] = false
+			end
+			# Dry run
+			opts.on('-n', '--dry-run', "Perform a dry run") do
+				@options[:dry] = true
+				@options[:quiet] = false
+				@options[:verbose] = true
 			end
 			# Help
 			opts.on('-h', '--help', "Display this screen") do
