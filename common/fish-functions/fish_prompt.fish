@@ -1,7 +1,7 @@
 function git_prompt
-	if git branch --quiet 2> /dev/null 1> /dev/null
+	if git rev-parse 2> /dev/null
 		echo -n " "(set_color --bold black)
-		echo -n (git status -b --porcelain | egrep -ox '## (.*)' | cut -d" " -f2)
+		echo -n (git status -b --porcelain | egrep -ox '## (.*)' | cut -d" " -f2 | awk -F'[.]{3}' '{print $1}')
 		echo -n (set_color --bold yellow)
 		echo -n (git log -1 --abbrev-commit --pretty=format:%h)
 		echo -n (set_color --bold red)
