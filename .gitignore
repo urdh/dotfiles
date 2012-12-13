@@ -1,3 +1,4 @@
 .safe-targets
 *.pyc
 *~
+.DS_Store
