@@ -155,7 +155,7 @@ class DotfileDSL
 				puts "\e[33mNOTICE: \e[0m Appending to already used target ~/#{thistarget}" if @verbose
 			end
 			File.unlink(abs_target) if File.symlink?(abs_target) and not @dry
-			flag = @used_targets.include?(abs_target) ? 'w+' : 'w'
+			flag = @used_targets.include?(abs_target) ? 'a' : 'w'
 			File.open(abs_target, flag) do |out|
 				merge.each do |source|
 					out.write(File.read(source))
