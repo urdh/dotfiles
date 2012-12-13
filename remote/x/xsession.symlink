@@ -1,0 +1,18 @@
+#!/bin/sh
+# Settings
+xrdb -merge ~/.dotfiles/x/Xdefaults.symlink
+xmodmap ~/.dotfiles/x/xmodmaprc.symlink
+#display -window root ~/background
+
+# Unclutter/screensaver
+unclutter -idle 2.0 &
+gnome-screensaver &
+
+# Window manager
+#if [ -x /chalmers/sw/unsup/awesome-3.4.8/bin/awesome ]; then
+#    exec /chalmers/sw/unsup/awesome-3.4.8/bin/awesome
+#fi
+if [ -x /chalmers/sw/unsup64/xoat-cc727e76aa/bin/xoat ]; then
+     exec /chalmers/sw/unsup64/xoat-cc727e76aa/bin/xoat
+fi
+exec twm

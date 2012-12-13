@@ -1,0 +1,22 @@
+# Fishfish color scheme
+set fish_color_autosuggestion 585858
+set fish_color_command 5faf00
+set fish_color_comment 5f87af
+set fish_color_cwd 5faf00
+set fish_color_cwd_root red
+set fish_color_end 87afd7
+set fish_color_error 'd70000'  '--bold'
+set fish_color_escape d7af00
+set fish_color_history_current ff5fd7
+set fish_color_match 00d7d7
+set fish_color_normal c6c6c6
+set fish_color_operator 00afaf
+set fish_color_param 87d75f
+set fish_color_quote ffd75f
+set fish_color_redirection 87afd7
+set fish_color_search_match ff00af
+set fish_color_valid_path --underline
+set fish_pager_color_completion normal
+set fish_pager_color_description normal
+set fish_pager_color_prefix cyan
+set fish_pager_color_progress cyan

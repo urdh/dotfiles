@@ -1,0 +1,3 @@
+[core]
+excludesfile = ~/.dotfiles/git/gitignore
+editor = /usr/bin/nano

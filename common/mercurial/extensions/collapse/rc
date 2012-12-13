@@ -1,0 +1,2 @@
+[extensions]
+collapse = ~/.dotfiles/mercurial/extensions/collapse/collapse.py

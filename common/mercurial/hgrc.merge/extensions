@@ -1,0 +1,6 @@
+[extensions]
+transplant = 
+hgext.fetch =
+hgext.graphlog =
+hgext.churn = 
+hgext.mq =

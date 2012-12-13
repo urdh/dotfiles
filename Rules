@@ -1,11 +1,32 @@
 #!/usr/bin/env ruby
 # See README.md for more information on this file
 
+# Special machine names
+@machine = 'remote' if @machine.include?('.chalmers.se')
+
 # Ignore temporary files. Run first!
 ignore  '(.*)~$'
 ignore  '^#(.*)#$'
 
-# Catch-all rules for merges and symlinks. Run last!
-ignore  '[^/]*/([^/]*)\.merge$'
-merge   '[^/]*/([^/]*)\.merge/[^/]*', '.$1'
-symlink '[^/]*/([^/]*)\.symlink$',    '.$1'
+# Awesome window manager
+symlink 'x/awesome\.symlink', '.config/awesome' if @machine == 'remote'
+symlink 'X/awesome\.symlink$','.config/awesome' if @machine == 'chomsky'
+ignore  'X/awesome\.symlink.*'					if @machine == 'chomsky'
+
+# Do all of this for 'common' and current machine files
+dirs = [@machine, 'common']
+dirs = [@machine] if @machine == 'fserv'
+directories dirs do
+	# Mercurial stuff
+	merge   'mercurial/(extensions/[^/]*/rc|hgrc.merge/.+)','.hgrc',0
+
+	# Fish shell functions and settings
+	symlink 'shell/config\.fish',         '.config/fish/config.fish'
+	symlink '[^/]/(.*)\.fish',            '.config/fish/functions/$1.fish'
+	merge   'shell/profile/.*',           '.config/fish/profile'
+
+	# Catch-all rules for merges and symlinks. Run last!
+	ignore  '[^/]*/([^/]*)\.merge$'
+	merge   '[^/]*/([^/]*)\.merge/[^/]*', '.$1'
+	symlink '[^/]*/([^/]*)\.symlink$',    '.$1'
+end

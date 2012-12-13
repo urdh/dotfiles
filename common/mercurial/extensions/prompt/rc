@@ -1,0 +1,2 @@
+[extensions]
+prompt = ~/.dotfiles/mercurial/extensions/prompt/prompt.py

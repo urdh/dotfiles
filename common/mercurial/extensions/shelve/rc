@@ -1,0 +1,2 @@
+[extensions]
+shelve = ~/.dotfiles/mercurial/extensions/shelve/hgshelve.py

@@ -1,0 +1,5 @@
+if [[ $TERM != "dumb" ]] ; then
+    if [ -x /chalmers/sw/unsup64/fishfish-beta-r2/bin/fish  ] ; then
+        exec /chalmers/sw/unsup64/fishfish-beta-r2/bin/fish
+    fi
+fi

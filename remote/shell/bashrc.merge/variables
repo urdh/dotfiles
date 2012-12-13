@@ -1,0 +1,7 @@
+export LANG="sv_SE.utf8"
+export LC_LL="sv_SE.utf8"
+export WEBKIT_IGNORE_SSL_ERRORS="1"
+if [ -x /chalmers/sw/unsup64/mosh-HEAD/bin/mosh-server ]; then
+    export PATH=$PATH:/chalmers/sw/unsup64/mosh-HEAD/bin
+fi
+export PS1="\033[31mbash\033[m "`whoami`"@"`hostname | awk -F'.' '{print $1}'`"\033|32m -\033|m> ";

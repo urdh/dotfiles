@@ -1,0 +1,5 @@
+if [ -x /chalmers/sw/unsup64/jed-0.99-19/bin/jed  ] ; then
+    export PATH=$PATH:/chalmwes/sw/unsup64/jed-0.99-19/bin
+    export EDITOR="jed"
+    export JED_UTF8=1
+fi

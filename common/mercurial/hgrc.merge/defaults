@@ -1,0 +1,3 @@
+[defaults]
+annotate = -u
+addremove = --similarity 100
