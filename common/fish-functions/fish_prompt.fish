@@ -5,10 +5,10 @@ function git_prompt
 		echo -n (set_color --bold yellow)
 		echo -n (git log -1 --abbrev-commit --pretty=format:%h)
 		echo -n (set_color --bold red)
-		if test (git status -b --porcelain | egrep -ox 'A  (.*)')
+		if test -n (git status -b --porcelain | egrep -ox 'A (.*)' | head -n1)
 			echo -n "!"
 		else
-			if test (git status -b --porcelain | egrep -ox '\?\? (.*)')
+			if test -n (git status -b --porcelain | egrep -ox '\?\? (.*)' | head -n1)
 				echo -n "?"
 			end
 		end
