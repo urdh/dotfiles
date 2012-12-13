@@ -148,12 +148,12 @@ class DotfileDSL
 			abs_target = File.absolute_path("#{@destpath}/#{thistarget}")
 			if File.exists?(abs_target) and not @safe_targets.include?(abs_target)
 				return true if @quiet
-				puts "\e[31mWARNING:\e[0m Will not replace existing target ~/#{thistarget}"
-				puts "         Please remove the file or modify your \e[35mmerge '#{regex}'\e[0m rule."
+				puts "\e[31mWARNING:\e[0m Will not replace existing target ~/#{thistarget}" 
+				puts "         Please remove the file or modify your \e[35mmerge '#{regex}'\e[0m rule." 
 				return true
 			elsif File.exists?(abs_target) and @used_targets.include?(abs_target)
 				return true if @quiet
-				puts "\e[33mNOTICE: \e[0m Appending to already used target ~/#{thistarget}" unless @quiet
+				puts "\e[33mNOTICE: \e[0m Appending to already used target ~/#{thistarget}" if @verbose
 				return true
 			end
 			File.unlink(abs_target) if File.symlink?(abs_target) and not @dry
@@ -190,8 +190,6 @@ class DotfileCLI
 			# Dry run
 			opts.on('-n', '--dry-run', "Perform a dry run") do
 				@options[:dry] = true
-				@options[:quiet] = false
-				@options[:verbose] = true
 			end
 			# Debug
 			opts.on('-d', '--debug', "Print debug information") do
