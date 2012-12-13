@@ -42,6 +42,7 @@ class DotfileDSL
 		@dry = options[:dry]
 		@debug = options[:debug]
 		# Variables
+		@prefix = ''
 		@oldpwd = Dir.pwd
 		Dir.chdir(@sourcepath)
 		@unhandled_files = Dir.glob(["*/**/*"])
@@ -59,17 +60,9 @@ class DotfileDSL
 	end
 
 	def directory(dir, &block)
-		opwd = Dir.pwd
-		fdir = File.join(opwd, dir)
-		if not (File.exists?(fdir) and File.directory?(fdir))
-			return if @quiet
-			puts "\e[31mWARNING:\e[0m The source directory #{fdir} does not exist."
-			puts "         Please create it or modify your \e[35mdirectory '#{dir}'\e[0m rule."
-			return
-		end
-		Dir.chdir(fdir)
+		@prefix = "#{dir}/"
 		block.call
-		Dir.chdir(opwd)
+		@prefix = ''
 	end
 
 	def compile()
@@ -101,7 +94,7 @@ class DotfileDSL
 	end
 
 	def symlink(regex, target)
-		r = Regexp.new(regex)
+		r = Regexp.new("#{@prefix}#{regex}")
 		@unhandled_files.reject! do |file|
 			next nil unless r.match(file)
 			thistarget = "#{target}" # Force a copy of the string
@@ -133,7 +126,7 @@ class DotfileDSL
 	end
 
 	def merge(regex, target, group = 1)
-		r = Regexp.new(regex)
+		r = Regexp.new("#{@prefix}#{regex}")
 		merge = Hash.new
 		@unhandled_files.reject! do |file|
 			next nil unless r.match(file)
