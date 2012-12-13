@@ -152,12 +152,11 @@ class DotfileDSL
 				puts "         Please remove the file or modify your \e[35mmerge '#{regex}'\e[0m rule." 
 				return true
 			elsif File.exists?(abs_target) and @used_targets.include?(abs_target)
-				return true if @quiet
 				puts "\e[33mNOTICE: \e[0m Appending to already used target ~/#{thistarget}" if @verbose
-				return true
 			end
 			File.unlink(abs_target) if File.symlink?(abs_target) and not @dry
 			flag = @used_targets.include?(abs_target) ? 'w+' : 'w'
+			puts flag, merge
 			File.open(abs_target, flag) do |out|
 				merge.each do |source|
 					out.write(File.read(source))
