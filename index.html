@@ -12,7 +12,88 @@
        <h1>dotfiles</h1>
        <h2>An attempt to organize, version-control and share dotfiles across systems</h2>
     </header>
-    
+    <h2>dotfiles</h2>
+
+    <p>This project is simply an attempt to organize, version-control and share my own dotfiles across systems I use as well as with other people.
+    Heavy inspiration was taken from <a href="https://github.com/holman/dotfiles">holman&rsquo;s dotfiles</a> on Github, but the main script is written from scratch.</p>
+
+    <p>The idea is that you&rsquo;ll fragment and sort your dotfiles in subdirectories of <code>~/.dotfiles</code>, and then run <code>dotfiles.rb</code> to transfer the contents of these files into your home directory.
+    Two modes of operation are implemented; symlinking and merging.
+    The default <code>Rules</code> file (explained later) showcases pretty much all the features of the rules DSL.
+    Additional rules can be added to the <code>Rules</code> file to customize the operation of <code>dotfiles.rb</code>.</p>
+
+    <p>Since I use this repository to store my own dotfiles as well, I have organized things into subdirectories. The default <code>Rules</code> file runs most of its rules on two of these subdirectories; the <code>common</code> directory and one directory corresponding to the current machine.</p>
+
+    <h2>install</h2>
+
+    <p>Installing is fairly simple, if you only want the script and none of the version-controlling goodies:</p>
+
+    <ol>
+    <li><code>git clone https://github.com/urdh/dotfiles.git ~/.dotfiles</code></li>
+    </ol>
+
+
+    <p>After moving your dotfiles to subfolders in <code>~/.dotfiles</code>, renaming them and customizing the Rules file, simply do this:</p>
+
+    <ol>
+    <li><code>cd ~/.dotfiles</code></li>
+    <li><code>./dotfiles.rb -v</code></li>
+    </ol>
+
+
+    <p>The script will symlink and merge your files as instructed.</p>
+
+    <h3>advanced install</h3>
+
+    <p>If you plan on version-controlling your dotfiles as well (and feel comfortable using Git), I recommend forking the repository on Github, then creating your own branch(es) for whatever machines you&rsquo;ve got dotfiles on (and closing the branches you won&rsquo;t use):</p>
+
+    <ol>
+    <li><a href="https://help.github.com/articles/fork-a-repo">Fork the repository on Github</a>.</li>
+    <li><code>git clone git@github.com:&lt;username&gt;/dotfiles.git ~/.dotfiles</code></li>
+    </ol>
+
+
+    <p>You can now start moving your dotfiles into <code>~/.dotfiles</code>, splitting them into categories, projects or any other organized mess. Customize the <code>Rules</code> file and commit+push your initial setup.
+    I prefer to make one commit for every logical change, since that makes it easy to cherrypick or disable specific files by reverting or transplanting changesets between branches.</p>
+
+    <p>If you choose to fork the project, and make useful changes to the <code>dotfiles.rb</code> script (or add useful dotfiles to the <code>contrib/</code> directory), feel free to <a href="https://help.github.com/articles/using-pull-requests">send a pull request</a>.</p>
+
+    <h2>the rules</h2>
+
+    <p>The script reads instructions from <code>~/.dotfiles/Rules</code> and applies these to process the files in <code>~/.dotfiles</code>.
+    Each file matches only one rule, and rules are matched in the order that they appear in the <code>Rules</code> file.</p>
+
+    <p>There are three different instructions available:</p>
+
+    <ul>
+    <li><code>ignore &lt;regex&gt;</code> tells the script to ignore all files and directories matching the regular expression <code>&lt;regex&gt;</code>.</li>
+    <li><code>symlink &lt;regex&gt;, &lt;target&gt;</code> tells the script to create a symlink from <code>~/&lt;target&gt;</code> to the file matching <code>&lt;regex&gt;</code>. The target filename may contain tokens of the type <code>$[1-9]</code> which will be replaced by the corresponding matching group in the regular expression.</li>
+    <li><code>merge &lt;regex&gt;, &lt;target&gt;, [&lt;group&gt;]</code> tells the script to merge all files matching <code>&lt;regex&gt;</code> directly into the file <code>&lt;target&gt;</code>. The files will be appended to <code>&lt;target&gt;</code> in lexiographical order. As with <code>symlink</code>, <code>&lt;target&gt;</code> may contain tokens of the type <code>$[1-9]</code> which will be replaced by the corresponding matching group in the regular expression. It will also collect files by the first matching group (unless <code>&lt;group&gt;</code> is specified).</li>
+    </ul>
+
+
+    <p>Additionally, you can use regular ruby code, the <code>@machine</code> variable containing the machine hostname, and the following blocks:</p>
+
+    <ul>
+    <li><code>directory &lt;dir&gt; do ...</code> performs the actions in the block, but only matches files in the specified directory.</li>
+    <li><code>directories &lt;dirs&gt; do ...</code> does the same thing, but for multiple directories.</li>
+    </ul>
+
+
+    <h2>license</h2>
+
+    <p>The script is licensed under the MIT license (and by sending a pull request with changes to the script you agree to licensing the relevant changes under the MIT license as well - but please add your name to the copyright holder list in your pull request):</p>
+
+    <blockquote><p>Copyright &copy; 2012 Simon Sigurdhsson</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &ldquo;Software&rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+    <p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></blockquote>
+
+    <p>All content in the subdirectories <code>common</code>, <code>lagrange</code>, <code>fserv</code>, <code>chomsky</code> and <code>contrib</code> is <a href="http://creativecommons.org/publicdomain/zero/1.0/">effectively public-domain</a> unless otherwise noted.</p>
+
     <footer>
         <p>This project by <a href="http://urdh.github.com/">me</a> is hosted by <a href="http://github.com/urdh/dotfiles">Github</a>.</p>
     </footer>
