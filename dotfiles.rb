@@ -54,13 +54,20 @@ class DotfileDSL
 
 	def directories(dirs, &block)
 		dirs.each do |dir|
-			directory(dir, block)
+			directory(dir, &block)
 		end
 	end
 
 	def directory(dir, &block)
 		opwd = Dir.pwd
-		Dir.chdir(File.join(opwd, dir))
+		fdir = File.join(opwd, dir)
+		if not (File.exists?(fdir) and File.directory?(fdir))
+			return if @quiet
+			puts "\e[31mWARNING:\e[0m The source directory #{fdir} does not exist."
+			puts "         Please create it or modify your \e[35mdirectory '#{dir}'\e[0m rule."
+			return
+		end
+		Dir.chdir(fdir)
 		block.call
 		Dir.chdir(opwd)
 	end
