@@ -52,6 +52,19 @@ class DotfileDSL
 		@machine = Socket.gethostname.gsub('.local','')
 	end
 
+	def directories(dirs, &block)
+		dirs.each do |dir|
+			directory(dir, block)
+		end
+	end
+
+	def directory(dir, &block)
+		opwd = Dir.pwd
+		Dir.chdir(File.join(opwd, dir))
+		block.call
+		Dir.chdir(opwd)
+	end
+
 	def compile()
 		self.instance_eval(File.read(@rules))
 	end
@@ -140,12 +153,12 @@ class DotfileDSL
 				return true
 			elsif File.exists?(abs_target) and @used_targets.include?(abs_target)
 				return true if @quiet
-				puts "\e[31mWARNING:\e[0m Will not replace already used target ~/#{thistarget}"
-				puts "         Please check your rules file for inconsistencies."
+				puts "\e[33mNOTICE: \e[0m Appending to already used target ~/#{thistarget}" unless @quiet
 				return true
 			end
-			File.unlink(abs_target) if File.symlink?(abs_target) and !@dry
-			File.open(abs_target, 'w') do |out|
+			File.unlink(abs_target) if File.symlink?(abs_target) and not @dry
+			flag = @used_targets.include?(abs_target) ? 'w+' : 'w'
+			File.open(abs_target, flag) do |out|
 				merge.each do |source|
 					out.write(File.read(source))
 					out.write("\n\n")
