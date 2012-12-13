@@ -20,6 +20,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 require 'optparse'
+require 'socket'
 
 class DotfileDSL
 	def initialize(options = {})
@@ -47,6 +48,8 @@ class DotfileDSL
 		@used_targets = Array.new
 		@safe_targets = File.exists?(File.absolute_path("#{@sourcepath}/.safe-targets")) ? File.readlines(File.absolute_path("#{@sourcepath}/.safe-targets")).map{|i| i.strip} : []
 		puts "#{@unhandled_files.length} sources to process, #{@safe_targets.length} known safe targets." if @verbose
+		# For use in the Rules file
+		@machine = Socket.gethostname.gsub('.local','')
 	end
 
 	def compile()
