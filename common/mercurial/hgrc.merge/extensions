@@ -4,3 +4,4 @@ hgext.fetch =
 hgext.graphlog =
 hgext.churn = 
 hgext.mq =
+convert = 
