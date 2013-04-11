@@ -3,6 +3,7 @@
 
 # Special machine names
 @machine = 'remote' if @machine.include?('.chalmers.se')
+@machine = 'lagrange' if @machine.include?('dhcp-')
 
 # Ignore temporary files. Run first!
 ignore  '(.*)~$'
