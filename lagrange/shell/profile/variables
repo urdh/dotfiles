@@ -1,0 +1,2 @@
+# Default PDF viewer
+set --export PDFVIEWER skim

@@ -18,6 +18,9 @@ ignore  'X/awesome\.symlink.+'					if @machine == 'chomsky'
 dirs = [@machine, 'common']
 dirs = [@machine] if @machine == 'fserv'
 directories dirs do
+	# Auxillary files
+	ignore  '[^/]*/([^/]*)/auxillary/(.*)$'
+
 	# Mercurial stuff
 	merge   'mercurial/(extensions/[^/]+/rc|hgrc.merge/.+)','.hgrc',0
 
