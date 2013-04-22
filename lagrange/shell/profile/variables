@@ -1,2 +1,2 @@
 # Default PDF viewer
-set --export PDFVIEWER skim
+set --export PDFVIEWER 'open -a Skim'
