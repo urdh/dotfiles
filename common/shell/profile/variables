@@ -1,0 +1,2 @@
+# Default editor
+set --export EDITOR jed
