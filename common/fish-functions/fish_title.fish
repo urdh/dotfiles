@@ -3,13 +3,14 @@ function fish_title
 		return
 	end
 
-	set -l hostname (whoami)@(hostname|cut -d . -f 1)
 	set -l pwd (prompt_pwd)
 	set -l job "$_"
-	if test $_ != fish
-		set -g fish_title_string (printf '%s (%s) [%s]' $job $pwd $hostname)
+	if test $_ = ssh
+		set -g fish_title_string 'ssh'
+	else if test $_ != fish
+		set -g fish_title_string (printf '%s (%s)' $job $pwd)
 	else
-		set -g fish_title_string (printf '%s [%s]' $pwd $hostname)
+		set -g fish_title_string (printf '%s' $pwd)
 	end
 	echo $fish_title_string
 end
