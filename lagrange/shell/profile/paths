@@ -8,3 +8,5 @@ set --export PATH /usr/local/share/python $PATH
 set --export PATH /usr/local/share/python3 $PATH
 # Homebrew Ruby gems
 set --export PATH /usr/local/opt/ruby/bin $PATH
+# Homebrew pypy
+set --export PATH /usr/local/share/pypy $PATH
