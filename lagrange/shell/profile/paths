@@ -1,5 +1,3 @@
-# Homebrew
-set --export PATH /usr/local/bin /usr/local/sbin $PATH
 # TeX distribution
 set --export PATH /usr/texbin $PATH
 # Homebrew python
@@ -8,3 +6,5 @@ set --export PATH /usr/local/share/python $PATH
 set --export PATH /usr/local/share/python3 $PATH
 # Homebrew Ruby gems
 set --export PATH /usr/local/opt/ruby/bin $PATH
+# Homebrew
+set --export PATH /usr/local/bin /usr/local/sbin $PATH
