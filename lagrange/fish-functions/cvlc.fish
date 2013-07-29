@@ -1,3 +1,3 @@
 function cvlc
-	vlc -I rc $argv
+	vlc -I dummy $argv
 end
