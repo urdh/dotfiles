@@ -55,7 +55,7 @@ license
 =======
 The script is licensed under the MIT license (and by sending a pull request with changes to the script you agree to licensing the relevant changes under the MIT license as well - but please add your name to the copyright holder list in your pull request):
 
-> Copyright (C) 2012-2013 Simon Sigurdhsson
+> Copyright (C) 2012-2014 Simon Sigurdhsson
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 >
