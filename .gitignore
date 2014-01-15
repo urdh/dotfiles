@@ -2,3 +2,4 @@
 *.pyc
 *~
 *.DS_Store
+lagrange/git/gitconfig.merge/private

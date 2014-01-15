@@ -1,3 +1,2 @@
-set fish_greeting " "
 # Default PDF viewer
 set --export PDFVIEWER xpdf
