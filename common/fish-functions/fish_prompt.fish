@@ -2,8 +2,8 @@ function git_prompt
 	if git rev-parse 2> /dev/null
 		set branch (git status -b --porcelain | egrep -ox '## (.*)' | cut -d" " -f2 | awk -F'[.]{3}' '{print $1}')
 		set head (git log -1 --abbrev-commit --pretty=format:%h)
-		set outgoing (git log -1 --pretty=format:%h --abbrev-commit $branch --not --remotes)
-		set incoming (git log -1 --abbrev-commit --pretty=format:%h --remotes --not $branch)
+		set outgoing (git log -1 --pretty=format:%h --abbrev-commit '@{u}..' 2>/dev/null)
+		set incoming (git log -1 --pretty=format:%h --abbrev-commit '..@{u}' 2>/dev/null)
 		# print the branch name
 		echo -n " "(set_color --bold black)
 		echo -n $branch
