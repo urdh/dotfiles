@@ -1,4 +1,4 @@
-function git_prompt
+function git_prompt --description 'Write out Git status in prompt-friendly format'
 	if git rev-parse 2> /dev/null
 		set branch (git status -b --porcelain | egrep -ox '## (.*)' | cut -d" " -f2 | awk -F'[.]{3}' '{print $1}')
 		set head (git log -1 --abbrev-commit --pretty=format:%h)
@@ -36,7 +36,7 @@ function git_prompt
 	end
 end
 
-function hg_prompt
+function hg_prompt --description 'Write out Mercurial status in prompt-friendly format'
 	hg prompt " "(set_color --bold black)"{branch}"(set_color --bold yellow)"{rev}"(set_color --bold red)"{status}" 2> /dev/null
 end
 

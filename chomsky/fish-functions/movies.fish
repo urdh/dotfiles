@@ -1,4 +1,4 @@
-function movies
+function movies --description 'Mount/unmount movie folder on laptop'
   switch $argv[1]
     case on
       afp_client mount -u ssimon -p - lagrange.local:Movies /media/movies

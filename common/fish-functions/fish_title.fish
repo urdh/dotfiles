@@ -1,4 +1,4 @@
-function fish_title
+function fish_title --description 'Set terminal title'
 	if set -q fish_title_disabled
 		return
 	end
