@@ -3,7 +3,7 @@ function __fish_complete_pdf --description 'Complete using PDF files' --argument
 	if test (count $argv) -gt 1
 		set desc $argv[2]
 	end
-	eval "set pdfs "$comp"*.pdf"
+	eval "set pdfs "$comp"*.pdf" ^/dev/null
 	if test $pdfs[1]
 		printf "%s\t$desc\n" $pdfs
 	end
