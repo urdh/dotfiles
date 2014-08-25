@@ -1,6 +1,6 @@
 function fish_greeting --description 'Print the shell greeting'
 	set c_n (printf "%s%s" (set_color normal) (set_color normal))
-	set c_w (printf "%s%s" (set_color normal) (set_color --bold blue))
+	set c_w (printf "%s%s" (set_color normal) (set_color cyan))
 
 	set location (printf "%sWelcome to %s%s%s" $c_n $c_w (hostname) $c_n)
 	set system (printf "%sRunning %s%s%s on %s%s%s" $c_n $c_w (uname -mrs) $c_n $c_w (tty | sed -e 's/.*tty\(.*\)/\1/') $c_n)
