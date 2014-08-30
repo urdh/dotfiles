@@ -1,4 +1,5 @@
 #!/usr/local/bin/fish
 if status --is-login
-    . ~/.config/fish/profile
+    source ~/.config/fish/profile.fish
+    source ~/.config/fish/tacklebox.fish
 end
