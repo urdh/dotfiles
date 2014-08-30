@@ -1,8 +1,8 @@
 # Tacklebox repositories
-set tacklebox_path ~/.tackle/urdh/tackle \
-                   ~/.tackle/justinmayer/tackle \
+set tacklebox_path ~/.tackle/bpinto/oh-my-fish \
                    ~/.tackle/urdh/oh-my-fish \
-                   ~/.tackle/bpinto/oh-my-fish
+                   ~/.tackle/justinmayer/tackle \
+                   ~/.tackle/urdh/tackle
 
 # Initial setup, including theme
 set tacklebox_modules
