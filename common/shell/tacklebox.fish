@@ -16,7 +16,8 @@ set tacklebox_plugins $tacklebox_plugins \
 
 # Things from urdh/oh-my-fish and bpinto/oh-my-fish
 set tacklebox_modules $tacklebox_modules
-set tacklebox_plugins $tacklebox_plugins
+set tacklebox_plugins $tacklebox_plugins \
+                      bundler localhost 
 
 # Finally, load Tacklebox itself
 source ~/.tacklebox/tacklebox.fish
