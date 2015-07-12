@@ -1,5 +1,5 @@
 # TeX distribution
-set --export PATH /usr/texbin $PATH
+set --export PATH /Library/TeX/texbin $PATH
 # Homebrew Ruby gems
 set --export PATH /usr/local/opt/ruby/bin $PATH
 # Homebrew
