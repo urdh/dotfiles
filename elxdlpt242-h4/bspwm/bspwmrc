@@ -1,0 +1,58 @@
+#!/bin/sh
+
+## X and related things
+xrdb -merge ~/.Xresources > /tmp/xrdb.log 2>&1
+xmodmap ~/.config/bspwm/xmodmaprc > /tmp/xmodmap.log 2>&1
+
+
+## BSPWM settings
+bspc config border_width            1
+bspc config window_gap             14
+bspc config top_padding            14
+bspc config left_padding            0
+bspc config right_padding           0
+bspc config bottom_padding         14
+
+bspc config split_ratio           0.50
+
+bspc config borderless_monocle    false
+bspc config gapless_monocle       false
+bspc config focus_by_distance     true
+bspc config focus_follows_pointer true
+bspc config auto_alternate        false
+bspc config auto_cancel           true
+
+bspc config normal_frame_opacity  0.0
+bspc config focused_frame_opacity 0.05
+
+bspc config remove_disabled_monitors   true
+#bspc config remove_unplugged_monitors  true # causes crash?
+bspc config merge_overlapping_monitors true
+
+bspc monitor eDP1 -d I II III IV V
+bspc monitor DP1 -d VI VII VIII IX X
+bspc monitor HDMI1 -d '?'
+
+## BSPWM rules
+bspc rule -a Chromium desktop=^2 follow=on
+bspc rule -a Firefox desktop=^2 follow=on
+bspc rule -a Thunderbird desktop=^3 follow=on
+bspc rule -a Pidgin desktop=^4
+bspc rule -a URxvt-Irssi desktop=^5
+bspc rule -a libreoffice floating=on
+
+# TODO: external rules (for example, pidgin windows don't open in the same desktop as the friend list and I think an external rule could fix that)
+#bpsc config external_rules_command ~/.config/bspwm/external_rules
+#bspc config rule_command ~/.config/bspwm/rule_command
+#~/.config/bspwm/bspwm_rules
+
+
+## Tray, background, notifications, effects
+## Started in autostart instead!
+#trayer --edge bottom --align right --margin 14 --heighttype pixel --height 14 --SetDockType true --distance -12 --distancefrom bottom --transparent false --widthtype request > /tmp/trayer.log  2>&1 &
+feh --bg-fill "/home/esimsig/Pictures/Wallpapers/Mountain II.png"
+#compton -fcb -r 5 -o 0.5 -l -7 -t -7 > /tmp/compton.log 2>&1 &
+#dunst > /tmp/dunst.log 2>&1 &
+
+## Panels
+/home/esimsig/.config/bspwm/panel/panel &

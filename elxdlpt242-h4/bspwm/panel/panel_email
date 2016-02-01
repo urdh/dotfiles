@@ -1,0 +1,10 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+emails=$(find $HOME/Maildir/INBOX/new -type f -not -name '*,*S*' | wc -l)
+
+if [[ "$emails" -gt 0 ]]; then
+    echo "%{F$COLOR_URGENT} %{F-}$emails"
+else
+    echo " $emails"
+fi

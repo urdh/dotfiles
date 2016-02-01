@@ -1,0 +1,21 @@
+[general]
+status_path = ./status
+
+[pair calendar]
+a =calendar_local
+b = calendar_remote
+metadata = ["displayname", "color"]
+conflict_resolution = b wins
+
+[storage calendar_local]
+type = filesystem
+path = ~/Calendars/
+fileext = .ics
+
+[storage calendar_remote]
+type = caldav
+read_only = true
+url = "[REDACTED]"
+auth = basic
+username = "ERICSSON\\ESIMSIG"
+password = "[REDACTED]"

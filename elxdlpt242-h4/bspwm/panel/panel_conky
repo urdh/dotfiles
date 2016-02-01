@@ -1,0 +1,11 @@
+short_units yes
+background yes
+out_to_console yes
+out_to_x no
+# Update interval in seconds
+update_interval 3
+update_interval_on_battery 5
+
+TEXT
+C${execi 60 /home/esimsig/.config/bspwm/panel/panel_clock}
+S${execi 60 /home/esimsig/.config/bspwm/panel/panel_calendar}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_email}  ${wireless_essid wlan0}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_battery} ${battery_percent}%  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_sound}  %{-u}

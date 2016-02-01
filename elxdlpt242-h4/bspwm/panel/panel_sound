@@ -1,0 +1,30 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+# a bit ugly but w/e
+icon=""
+volume=""
+
+headphones=$(amixer -c1 contents | grep -A2 'Headphone Playback Switch' | grep ': values=' | grep -oE '(on|off)' | head -n1)
+if [[ "$headphones" == "on" ]]; then
+    max=$(amixer -c1 contents | grep -A2 'Master Playback Volume' | grep -oE 'max=[0-9]+' | grep -oE '[0-9]+')
+    value=$(amixer -c1 contents | grep -A2 'Master Playback Volume' | grep ': values=' | grep -oE '[0-9]+' | head -n1)
+    volume=$(( $value * 100 / $max ))
+    icon="⮜"
+else
+    max=$(amixer -c1 contents | grep -A2 'Master Playback Volume' | grep -oE 'max=[0-9]+' | grep -oE '[0-9]+')
+    value=$(amixer -c1 contents | grep -A2 'Master Playback Volume' | grep ': values=' | grep -oE '[0-9]+' | head -n1)
+    volume=$(( $value * 100 / $max ))
+    status=$(amixer -c1 contents | grep -A2 'Master Playback Switch' | grep ': values=' | grep -oE '(on|off)' | head -n1)
+    if [[ "$status" == "on" ]]; then
+        if [[ "$volume" -gt 50 ]]; then
+            icon="⮞" #full volume
+        else
+            icon="⮟" #half volume
+        fi
+    else
+        icon="⮝" # muted
+    fi
+fi
+
+echo "%{F$COLOR_ICON}$icon%{F-} $volume%"

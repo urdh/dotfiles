@@ -1,0 +1,62 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+while read -r line ; do
+    case $line in
+        C*)
+            clock="%{c}${line#?}"
+            ;;
+        S*)
+            sys_infos="%{r}${line#?}"
+            ;;
+        T*)
+            title=" %{F$COLOR_ICON}❦%{F-} bspwm"
+            ;;
+        W*)
+            wm_infos=""
+            IFS=':'
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+                name=${item#?}
+                case $item in
+                    [OFU]*)
+                        # active desktop
+                        wm_infos="$wm_infos%{U$COLOR_ACTIVE}%{+u}$name%{-u} "
+                        ;;
+                    o*)
+                        # inactive but occupied desktop
+                        wm_infos="$wm_infos%{A:$BAR_COMMAND -f $name:}%{U$COLOR_OCCUPIED}%{+u}$name%{-u}%{A} "
+                        ;;
+                    f*)
+                        # inactive desktop
+                        wm_infos="$wm_infos%{A:$BAR_COMMAND -f $name:}$name%{A} "
+                        ;;
+                    u*)
+                        # urgent desktop
+                        wm_infos="$wm_infos%{A:$BAR_COMMAND -f $name:}%{U$COLOR_URGENT}%{+u}$name%{-u}%{A} "
+                        ;;
+                    L*)
+                        # layout
+                        if [[ "$name" == "M" ]]; then
+                            wm_infos="$wm_infos  %{A:$BAR_COMMAND -l:}%{A} "
+                        else
+                            wm_infos="$wm_infos  %{A:$BAR_COMMAND -l:}%{A} "
+                        fi
+                        ;;
+                    [Mm]*)
+                        wm_infos="$wm_infos¤%{Sn$name}%{l}$title  "
+                        ;;
+                esac
+                shift
+            done
+            ;;
+    esac
+    IFS='¤'
+    set -- ${wm_infos#?}
+    while [ $# -gt 0 ] ; do
+        printf "%s" "$1$clock$sys_infos"
+        shift
+    done
+    printf "\n"
+done

@@ -1,0 +1,22 @@
+[general]
+accounts = main
+maxsyncaccounts = 1
+
+[Account main]
+localrepository = main-local
+remoterepository = main-remote
+status_backend = sqlite
+autorefresh = 5
+quick = 19
+postsynchook = ionice -c 3 chrt --idle 0 /bin/sh -c "notmuch new && afew --tag --new"
+
+[Repository main-local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository main-remote]
+type = IMAP
+remotehost = [REDACTED]
+remoteuser = esimsig
+keepalive = 60
+holdconnectionopen = yes

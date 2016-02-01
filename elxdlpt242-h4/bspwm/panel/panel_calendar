@@ -1,0 +1,6 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+meeting=$(find $HOME/Calendars -type f -name '*.ics' -print0 | xargs -0 /home/esimsig/.local/bin/next-meeting)
+
+echo "%{F$COLOR_ICON}⮖%{F-} $meeting"

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+FOCUS_DESKTOP=1
+TOGGLE_LAYOUT=2
+
+err() {
+	echo "$1"
+	exit 1
+}
+
+usage() {
+	echo "usage: panel_command [command] [value]"
+	echo
+	echo "Options:"
+	echo "	 -f, --focus-desktop - switch to desktop name"
+	echo "	 -l, --toggle-layout - toggle layout of current desktop"
+	echo "	 -h, --help           - display this"
+	exit
+}
+
+case $1 in
+	'-f'|'--focus-desktop')
+		[ -z "$2" ] && err "No desktop name specified"
+		COMMAND=$FOCUS_DESKTOP
+		ARGN="${2}"
+		;;
+	'-l'|'--toggle-layout')
+		COMMAND=$TOGGLE_LAYOUT
+		;;
+	''|'-h'|'--help'|*)
+		usage
+		exit
+		;;
+esac
+
+# Ensure the command is something we want to run
+case $COMMAND in
+	$FOCUS_DESKTOP)
+		bspc config auto_alternate false
+		bspc desktop -f $ARGN
+		bspc config auto_alternate true
+		;;
+	$TOGGLE_LAYOUT)
+		bspc desktop -l
+		;;
+	*)
+		;;
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+thetime=`/home/esimsig/.local/bin/fuzzy-clock`
+echo "It's %{F$COLOR_CLOCK}$thetime%{F-}."

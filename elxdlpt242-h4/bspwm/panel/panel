@@ -1,0 +1,35 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+if [ "$(pgrep -cx panel)" -gt 1 ] ; then
+    printf "%s\n" "The panel is already running." >&2
+    exit 1
+fi
+
+function restart_panel() {
+    $0 "$@" &
+    exit 0
+}
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+trap restart_panel USR1
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+DISPLAY=:1 bspc control --subscribe > "$PANEL_FIFO" &
+echo "T" >  "$PANEL_FIFO" &
+conky -c /home/esimsig/.config/bspwm/panel/panel_conky > "$PANEL_FIFO" &
+
+# TODO: commands in the bar
+
+cat "$PANEL_FIFO" \
+	| /home/esimsig/.config/bspwm/panel/panel_bar \
+	| /home/esimsig/.local/bin/lemonbar \
+        -o eDP1 -o DP1 -o HDMI1 \
+		-f "$FONT1" -f "$FONT2"\
+		-F "$COLOR_FOREGROUND"\
+		-B "$COLOR_BACKGROUND"\
+		-g "$PANEL_GEOMETRY"\
+		-u $LINEHEIGHT &
+wait

@@ -1,0 +1,30 @@
+# Fonts defined in xfontsel (xft not yet supported)
+FONT1="-misc-xbmicons-medium-r-normal--12-120-72-72-c-60-iso10646-1"
+FONT2="-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+
+COLOR_BACKGROUND="#FFecf0f1"
+COLOR_FOREGROUND="#FF425d78"
+COLOR_ICON="#FF2980b9"
+COLOR_ACTIVE="#FF8e44ad"
+COLOR_OCCUPIED="#FF9b59b6"
+COLOR_URGENT="#FFc0392b"
+COLOR_CLOCK="#FF16a085"
+
+# Height of underlines / overlines
+LINEHEIGHT="1"
+
+# Panel geometry
+PANEL_HEIGHT=14
+PANEL_WIDTH=$((1920 - 14 - 14))
+PANEL_GEOMETRY="${PANEL_WIDTH}x${PANEL_HEIGHT}+14+7"
+
+# Notification geometry
+NOTIFY_HEIGHT=$PANEL_HEIGHT
+NOTIFY_WIDTH=135
+NOTIFY_GEOMETRY="${NOTIFY_WIDTH}x${NOTIFY_HEIGHT}+0+0"
+
+# Duration of notifications
+DURATION=2
+
+# Other
+BAR_COMMAND="/home/esimsig/.config/bspwm/panel/panel_command"

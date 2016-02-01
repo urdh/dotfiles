@@ -1,0 +1,37 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+# WIFI ICONS
+# 
+
+if iwconfig wlan0 | grep -q ESSID:off/any; then
+	true
+else
+	QUAL=`iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+	MAX=`iwconfig wlan0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
+	PERC=`echo $QUAL*100/$MAX | bc`
+
+	icon=""
+	case $PERC in
+		[0-4])
+			icon=""
+		;;
+		[4-9])
+			icon=""
+		;;
+		[2-3]*)
+			icon=""
+		;;
+		[4-5]*)
+			icon=""
+		;;
+		[6-7]*)
+			icon=""
+		;;
+		*)
+			icon=""
+		;;
+	esac
+
+	echo "%{F$COLOR_ICON}$icon%{F-}"
+fi

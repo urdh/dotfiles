@@ -1,0 +1,6 @@
+clear lock
+! Make Capslock do mod3 instead
+!clear mod3
+!add mod3 = Caps_Lock
+! Make Capslock send Hyper_L instead
+keysym Caps_Lock = 0xffed

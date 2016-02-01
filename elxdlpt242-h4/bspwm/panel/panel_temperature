@@ -1,0 +1,5 @@
+#!/bin/bash
+source "/home/esimsig/.config/bspwm/panel/config"
+
+temp=$((`sensors | grep "Physical id 0" | cut -d'+' -f2 | head -c2`))
+echo "$temp°C";

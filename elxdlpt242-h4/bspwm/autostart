@@ -1,0 +1,19 @@
+gnome-settings-daemon &
+light-locker &
+thunderbird &
+pidgin &
+nm-applet &
+urxvtd &
+NSGClient &
+
+davmail &
+offlineimap &
+nohup watch -e -n 600 vdirsyncer sync > /tmp/vdirsyncer.log &
+
+# Effects
+trayer --edge bottom --align right --margin 14 --heighttype pixel --height 14 --SetDockType true --distance -12 --distancefrom bottom --transparent false --widthtype request &
+compton -fcb -r 5 -o 0.5 -l -7 -t -7 &
+dunst &
+
+# Bugfix
+pkill -x light-locker

@@ -1,0 +1,88 @@
+! rxvt-unicode
+URxvt.imLocale: sv_SE.UTF-8
+URxvt.scrollstyle:      plain
+URxvt.secondaryScroll: true
+! Based on http://github.com/Corsair/emacs-flatui-theme
+! URxvt.fading: 50
+!URxvt.fadeColor:      #ecf0f1
+!URxvt.background:     #ecf0f1
+!URxvt.foreground:     #425d78
+!URxvt.cursorColor:    #e67e22
+!URxvt.highlightColor: #f39c12
+!URxvt.color0:  #425d78
+!URxvt.color8:  #7f8c8d
+!URxvt.color1:  #c0392b
+!URxvt.color9:  #e74c3c
+!URxvt.color2:  #27ae60
+!URxvt.color10: #2ecc71
+!URxvt.color3:  #f39c12
+!URxvt.color11: #f1c40f
+!URxvt.color4:  #2980b9
+!URxvt.color12: #3498db
+!URxvt.color5:  #8e44ad
+!URxvt.color13: #9b59b6
+!URxvt.color6:  #16a085
+!URxvt.color14: #1abc9c
+!URxvt.color7:  #bdc3c7
+!URxvt.color15: #ecf0f1
+! URxvt.geometry:  90x30
+URxvt.saveLines: 8192
+URxvt.visualBell: true
+URxvt.pastableTabs: false
+URxvt.font: xft:Input Mono:size=9:autohint=true:antialias=true:Regular
+URxvt.boldFont: xft:Input Mono:size=9:autohint=true:antialias=true:Bold
+URxvt.italicFont: xft:Input Mono:size=9:autohint=true:antialias=true:Regular:Italic
+URxvt.boldItalicFont: xft:Input Mono:size=9:autohint=true:antialias=true:Bold:Italic
+URxvt-Irssi.font: xft:Input Mono:size=8:autohint=true:antialias=true:Thin
+URxvt-Irssi.boldFont: xft:Input Mono:size=8:autohint=true:antialias=true:Regular
+URxvt-Irssi.italicFont: xft:Input Mono:size=8:autohint=true:antialias=true:Thin:Italic
+URxvt-Irssi.boldItalicFont: xft:Input Mono:size=8:autohint=true:antialias=true:Regular:Italic
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.C-Insert: perl:clipboard:paste
+URxvt.keysym.C-Delete: perl:clipboard:copy
+URxvt.clipboard.autocopy: true
+! xclock
+XClock.Clock.update: 1
+XClock.Clock.analog: true
+XClock.Clock.chime:  false
+XClock.Clock.background:  #ecf0f1
+XClock.Clock.foreground:  #425d78
+XClock.Clock.hourColor:   #c0392b
+XClock.Clock.minuteColor: #16a085
+XClock.Clock.secondColor: #425d78
+XClock.Clock.majorColor:  #c0392b
+XClock.Clock.minorColor:  #16a085
+
+! Base16 Default
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+*.foreground:   #383838
+*.background:   #f8f8f8
+*.cursorColor:  #383838
+
+*.color0:       #181818
+*.color1:       #ab4642
+*.color2:       #a1b56c
+*.color3:       #f7ca88
+*.color4:       #7cafc2
+*.color5:       #ba8baf
+*.color6:       #86c1b9
+*.color7:       #d8d8d8
+
+*.color8:       #585858
+*.color9:       #dc9656
+*.color10:      #a1b56c
+*.color11:      #383838
+*.color12:      #b8b8b8
+*.color13:      #e8e8e8
+*.color14:      #a16946
+*.color15:      #f8f8f8
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      #dc9656
+*.color17:      #a16946
+*.color18:      #282828
+*.color19:      #383838
+*.color20:      #b8b8b8
+*.color21:      #e8e8e8

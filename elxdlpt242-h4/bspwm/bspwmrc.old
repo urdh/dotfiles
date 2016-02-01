@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+# MISSING PIECES:
+# * panel border?
+# * font glitch in bar
+# * rules to confine programs to desktops and layouts
+# * configure lighthouse (a lot)
+# * configure compton using config file?
+#
+# * detect new monitors, spawn new panel and set bspwm stuff when detected
+# * should one panel be spawned per monitor? separate panel script into pieces?
+# * detect lost monitors?
+
+# BREAKING PROBLEMS:
+# * xmodmaprc not working
+# * mod + p kills bspwm instead of spawning lighthouse
+# * Something (panel?) spawns endless `ps` processes
+# * Only one screen is detected
+# * after bspwm is killed, endless panels are spawned :(
+
+# MAYBE FIXED PROBLEMS:
+# * After bspwm is killed, its background processes are left alive (feh et. al.)
+
+export PANEL_HEIGHT=14
+export PANEL_GAP=23
+
+bspc config border_width            1
+bspc config window_gap     $PANEL_GAP
+bspc config top_padding $PANEL_HEIGHT
+bspc config left_padding            0
+bspc config right_padding           0
+bspc config bottom_padding $PANEL_HEIGHT
+
+bspc config split_ratio           0.50
+
+bspc config borderless_monocle    false
+bspc config gapless_monocle       false
+bspc config focus_by_distance     true
+bspc config focus_follows_pointer false
+bspc config auto_alternate        false
+bspc config auto_cancel           true
+
+bspc config normal_frame_opacity  0.0
+bspc config focused_frame_opacity 0.05
+
+bspc config remove_disabled_monitors   true
+bspc config remove_unplugged_monitors  true
+bspc config merge_overlapping_monitors true
+
+bspc monitor eDP1 -d I II III IV V
+bspc monitor DP1 -d VI VII VIII IX X
+bspc monitor HDMI1 -d '?'
+
+#bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a Chromium desktop=^2 follow=on
+bspc rule -a Firefox desktop=^2 follow=on
+bspc rule -a Thunderbird desktop=^3 follow=on
+bspc rule -a Pidgin desktop=^4
+#bspc rule -a mplayer2 floating=on
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
+bspc rule -a libreoffice floating=on
+
+#bpsc config external_rules_command ~/.config/bspwm/external_rules
+#bspc config rule_command ~/.config/bspwm/rule_command
+#~/.config/bspwm/bspwm_rules
+
+xrdb -merge ~/.Xresources
+
+xmodmap ~/.config/bspwm/xmodmaprc
+
+trayer --edge bottom --align right --margin 23 --heighttype pixel --height $PANEL_HEIGHT --SetDockType true --distance -12 --distancefrom bottom --transparent true --widthtype request &
+
+feh --bg-fill "/home/esimsig/Pictures/Wallpapers/Mountain II.png"
+
+compton -fcb -r 5 -o 0.5 -l -7 -t -7 &
+
+dunst &
+
+panel &
