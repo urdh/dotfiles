@@ -26,10 +26,12 @@ conky -c /home/esimsig/.config/bspwm/panel/panel_conky > "$PANEL_FIFO" &
 cat "$PANEL_FIFO" \
 	| /home/esimsig/.config/bspwm/panel/panel_bar \
 	| /home/esimsig/.local/bin/lemonbar \
-        -o eDP1 -o DP1 -o HDMI1 \
+		-o eDP1 -o DP1 -o HDMI1 \
 		-f "$FONT1" -f "$FONT2"\
 		-F "$COLOR_FOREGROUND"\
 		-B "$COLOR_BACKGROUND"\
 		-g "$PANEL_GEOMETRY"\
-		-u $LINEHEIGHT &
+		-u $LINEHEIGHT \
+	| tee -a /tmp/panel-commands.log \
+	| sh &
 wait

@@ -2,9 +2,11 @@
 source "/home/esimsig/.config/bspwm/panel/config"
 
 emails=$(find $HOME/Maildir/INBOX/new -type f -not -name '*,*S*' | wc -l)
+click="" #"%{A:$BAR_COMMAND -e:}"
+unclick="" #"%{A}"
 
 if [[ "$emails" -gt 0 ]]; then
-    echo "%{F$COLOR_URGENT} %{F-}$emails"
+    echo "$click%{F$COLOR_URGENT} %{F-}$emails$unclick"
 else
-    echo " $emails"
+    echo "$click $emails$unclick"
 fi

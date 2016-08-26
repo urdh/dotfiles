@@ -8,4 +8,4 @@ update_interval_on_battery 5
 
 TEXT
 C${execi 60 /home/esimsig/.config/bspwm/panel/panel_clock}
-S${execi 60 /home/esimsig/.config/bspwm/panel/panel_calendar}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_email}  ${wireless_essid wlan0}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_battery} ${battery_percent}%  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_sound}  %{-u}
+S${execi 60 /home/esimsig/.config/bspwm/panel/panel_calendar}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_email}  ${execi 600 /home/esimsig/.config/bspwm/panel/panel_updates}  ${wireless_essid wlan0}  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_battery} ${battery_percent}%  ${execi 1 /home/esimsig/.config/bspwm/panel/panel_sound}  %{-u}

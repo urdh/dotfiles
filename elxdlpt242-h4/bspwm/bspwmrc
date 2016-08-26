@@ -40,6 +40,7 @@ bspc rule -a Thunderbird desktop=^3 follow=on
 bspc rule -a Pidgin desktop=^4
 bspc rule -a URxvt-Irssi desktop=^5
 bspc rule -a libreoffice floating=on
+#bspc rule -a Wfica floating=off
 
 # TODO: external rules (for example, pidgin windows don't open in the same desktop as the friend list and I think an external rule could fix that)
 #bpsc config external_rules_command ~/.config/bspwm/external_rules

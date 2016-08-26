@@ -2,6 +2,8 @@
 
 FOCUS_DESKTOP=1
 TOGGLE_LAYOUT=2
+SHOW_AGENDA=3
+SHOW_EMAILS=4
 
 err() {
 	echo "$1"
@@ -12,8 +14,10 @@ usage() {
 	echo "usage: panel_command [command] [value]"
 	echo
 	echo "Options:"
-	echo "	 -f, --focus-desktop - switch to desktop name"
-	echo "	 -l, --toggle-layout - toggle layout of current desktop"
+	echo "	 -f, --focus-desktop  - switch to desktop name"
+	echo "	 -l, --toggle-layout  - toggle layout of current desktop"
+	echo "	 -a, --agenda         - show popup with today's agenda"
+	echo "	 -e, --emails         - show popup with unread emails"
 	echo "	 -h, --help           - display this"
 	exit
 }
@@ -26,6 +30,12 @@ case $1 in
 		;;
 	'-l'|'--toggle-layout')
 		COMMAND=$TOGGLE_LAYOUT
+		;;
+	'-a'|'--agenda')
+		COMMAND=$SHOW_AGENDA
+		;;
+	'-e'|'--emails')
+		COMMAND=$SHOW_EMAILS
 		;;
 	''|'-h'|'--help'|*)
 		usage
@@ -41,7 +51,13 @@ case $COMMAND in
 		bspc config auto_alternate true
 		;;
 	$TOGGLE_LAYOUT)
-		bspc desktop -l
+		bspc desktop -l next
+		;;
+	$SHOW_AGENDA)
+		/home/esimsig/.config/bspwm/panel/popups/khal-agenda &
+		;;
+	$SHOW_EMAILS)
+		/home/esimsig/.config/bspwm/panel/popups/email-list &
 		;;
 	*)
 		;;

@@ -1,6 +1,8 @@
 # Fonts defined in xfontsel (xft not yet supported)
 FONT1="-misc-xbmicons-medium-r-normal--12-120-72-72-c-60-iso10646-1"
 FONT2="-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+# Fonts for dzen
+FONT3="-schumacher-clean-medium-r-normal--12-87-100-100-c-60-iso10646-1"
 
 COLOR_BACKGROUND="#FFecf0f1"
 COLOR_FOREGROUND="#FF425d78"
@@ -9,6 +11,10 @@ COLOR_ACTIVE="#FF8e44ad"
 COLOR_OCCUPIED="#FF9b59b6"
 COLOR_URGENT="#FFc0392b"
 COLOR_CLOCK="#FF16a085"
+
+COLOR_OPAQUE_BACKGROUND="#ecf0f1"
+COLOR_OPAQUE_FOREGROUND="#425d78"
+COLOR_OPAQUE_ACTIVE="#8e44ad"
 
 # Height of underlines / overlines
 LINEHEIGHT="1"
@@ -23,8 +29,14 @@ NOTIFY_HEIGHT=$PANEL_HEIGHT
 NOTIFY_WIDTH=135
 NOTIFY_GEOMETRY="${NOTIFY_WIDTH}x${NOTIFY_HEIGHT}+0+0"
 
+# Action popup geometry
+POPUP_TOP_OFFSET=14
+POPUP_WIDTH=400
+POPUP_LEFT_OFFSET=$((PANEL_WIDTH-POPUP_WIDTH+14))
+
 # Duration of notifications
 DURATION=2
 
 # Other
 BAR_COMMAND="/home/esimsig/.config/bspwm/panel/panel_command"
+POPUP_RUN="/home/esimsig/.config/bspwm/panel/popups/popup_run"

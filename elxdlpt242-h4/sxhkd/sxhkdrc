@@ -84,10 +84,10 @@ super + @button{1-3}
 #
 
 super + Return
-	urxvt -e /usr/bin/fish -l
+	urxvtc -e /usr/bin/fish -l
 
 super + section
-	sh -c 'lighthouse | sh'
+	env PATH=$PATH:/usr/NX/bin rofi -modi combi -combi-modi run,window,ssh -levenshtein-sort -fuzzy -show combi
 
 Scroll_Lock
 	sxlock
