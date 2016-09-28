@@ -53,18 +53,7 @@ Additionally, you can use regular ruby code, the `@machine` variable containing 
 
 license
 =======
-The script is licensed under the MIT license (and by sending a pull request with changes to the script you agree to licensing the relevant changes under the MIT license as well - but please add your name to the copyright holder list in your pull request):
-
-> Copyright (C) 2012-2015 Simon Sigurdhsson
->
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The script is licensed under the [MIT license](https://github.com/urdh/dotfiles/blob/master/LICENSE.md).
 
 All content in the subdirectories `common`, `lagrange`, `fserv`, `chomsky` and `contrib` is [effectively public-domain](http://creativecommons.org/publicdomain/zero/1.0/) unless otherwise noted.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/urdh/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
