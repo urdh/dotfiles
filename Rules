@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 # See README.md for more information on this file
 
-# Special machine names
-@machine = 'lagrange' if @machine.include?('dhcp-')
-
 # Ignore temporary files. Run first!
 ignore  '(.*)~$'
 ignore  '^#(.*)#$'

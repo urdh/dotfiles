@@ -1,8 +1,0 @@
-# TeX distribution
-set --export PATH /Library/TeX/texbin $PATH
-# Homebrew Ruby gems
-set --export PATH /usr/local/opt/ruby/bin $PATH
-# Homebrew
-set --export PATH /usr/local/bin /usr/local/sbin $PATH
-# Homebrew Erlang manuals
-set --export MANPATH :/usr/local/opt/erlang/lib/erlang/man $MANPATH

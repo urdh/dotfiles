@@ -1,5 +1,0 @@
-# Default PDF viewer
-set --export PDFVIEWER 'open -a Skim'
-# https://github.com/trishume/pro
-set --export PRO_BASE ~/code
-
