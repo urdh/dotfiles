@@ -7,7 +7,6 @@ ignore  '^#(.*)#$'
 
 # Do all of this for 'common' and current machine files
 dirs = [@machine, 'common']
-dirs = [@machine] if @machine == 'fserv'
 directories dirs do
 	# Auxillary files
 	ignore  '[^/]*/([^/]*)/auxillary/(.*)$'
