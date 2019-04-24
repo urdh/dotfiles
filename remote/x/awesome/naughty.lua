@@ -1,1 +1,0 @@
-/chalmers/sw/unsup/awesome-3.4.8/lib/naughty.lua

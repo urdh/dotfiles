@@ -1,4 +1,0 @@
-set --export LD_LIBRARY_PATH $LD_LIBRARY_PATH ~/local/lib
-set --export RUBYLIB ~/local/lib/
-set --export LANG "sv_SE.utf8"
-set --export LC_ALL "sv_SE.utf8"

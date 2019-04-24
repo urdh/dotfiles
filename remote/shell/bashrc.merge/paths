@@ -1,2 +1,0 @@
-export PATH=$PATH:~/C/:~/D/:~/local/:~/local/pygments/
-export MOZ_PLUGIN_PATH="/usr/lib/mozilla/plugins"

@@ -2,7 +2,6 @@
 # See README.md for more information on this file
 
 # Special machine names
-@machine = 'remote' if @machine.include?('.chalmers.se')
 @machine = 'lagrange' if @machine.include?('dhcp-')
 
 # Ignore temporary files. Run first!
@@ -10,7 +9,6 @@ ignore  '(.*)~$'
 ignore  '^#(.*)#$'
 
 # Awesome window manager
-symlink 'x/awesome\.symlink', '.config/awesome' if @machine == 'remote'
 symlink 'X/awesome\.symlink$','.config/awesome' if @machine == 'chomsky'
 ignore  'X/awesome\.symlink.+'					if @machine == 'chomsky'
 
