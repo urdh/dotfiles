@@ -1,0 +1,10 @@
+[diff-so-fancy]
+  changeHunkIndicators = false
+[color "diff-highlight"]
+  newHighlight = green bold 22
+  newNormal = green bold
+  oldHighlight = red bold 52
+  oldNormal = red bold
+[pager]
+  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX

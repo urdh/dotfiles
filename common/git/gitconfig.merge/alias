@@ -1,8 +1,0 @@
-[difftool.latex]
-	cmd = ~/.dotfiles/common/git/auxillary/git-latexdiff "$LOCAL" "$REMOTE"
-[difftool]
-	prompt = false
-[alias]
-	ldiff = difftool -t latex
-    since = !sh -c 'git log --pretty=format:\"%h %s\" $1.. -- $2 | cat && echo "\n"' -
-    since-last = !sh -c 'git since `git tag | tail -n1`'

@@ -1,3 +1,5 @@
 [user]
-email = Sigurdhsson@gmail.com
-name = Simon Sigurdhsson
+  email = Sigurdhsson@gmail.com
+  name = Simon Sigurdhsson
+[github]
+  user = urdh
