@@ -1,6 +1,0 @@
-#!/bin/sh
-xset s off
-xmodmap ~/.dotfiles/X/xmodmaprc.symlink
-xsetroot -solid white 
-x11vnc -forever -bg
-exec awesome

@@ -5,10 +5,6 @@
 ignore  '(.*)~$'
 ignore  '^#(.*)#$'
 
-# Awesome window manager
-symlink 'X/awesome\.symlink$','.config/awesome' if @machine == 'chomsky'
-ignore  'X/awesome\.symlink.+'					if @machine == 'chomsky'
-
 # Do all of this for 'common' and current machine files
 dirs = [@machine, 'common']
 dirs = [@machine] if @machine == 'fserv'

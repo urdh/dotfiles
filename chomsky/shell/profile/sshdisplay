@@ -1,3 +1,0 @@
-if test -n "$SSH_TTY"; or test -n (who am i | cut -f2  -d\( | cut -f1 -d:)
-    set -x DISPLAY :0
-end
