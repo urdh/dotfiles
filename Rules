@@ -13,7 +13,6 @@ directories dirs do
 
 	# Fish shell functions and settings
 	symlink 'shell/config\.fish',         '.config/fish/config.fish'
-	symlink 'shell/tacklebox.fish',       '.config/fish/tacklebox.fish'
 	symlink 'fish-functions/(.+)\.fish',  '.config/fish/functions/$1.fish'
 	symlink 'fish-completions/(.+)\.fish','.config/fish/completions/$1.fish'
 	merge   'shell/profile/.+',           '.config/fish/profile.fish'
