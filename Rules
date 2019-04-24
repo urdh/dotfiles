@@ -12,6 +12,8 @@ directories dirs do
 	ignore  '[^/]*/([^/]*)/auxillary/(.*)$'
 
 	# Fish shell functions and settings
+	symlink 'shell/fishfile',             '.config/fish/fishfile'
+	symlink 'shell/conf.d/(.+)\.fish',    '.config/fish/conf.d/$1.fish'
 	symlink 'shell/config\.fish',         '.config/fish/config.fish'
 	symlink 'fish-functions/(.+)\.fish',  '.config/fish/functions/$1.fish'
 	symlink 'fish-completions/(.+)\.fish','.config/fish/completions/$1.fish'
