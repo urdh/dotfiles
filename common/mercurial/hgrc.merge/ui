@@ -1,4 +1,0 @@
-[ui]
-username = Simon Sigurdhsson <Sigurdhsson@gmail.com>
-editor = /usr/bin/nano
-ignore = ~/.dotfiles/common/mercurial/hgignore

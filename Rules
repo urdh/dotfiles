@@ -11,9 +11,6 @@ directories dirs do
 	# Auxillary files
 	ignore  '[^/]*/([^/]*)/auxillary/(.*)$'
 
-	# Mercurial stuff
-	merge   'mercurial/(extensions/[^/]+/rc|hgrc.merge/.+)','.hgrc',0
-
 	# Fish shell functions and settings
 	symlink 'shell/config\.fish',         '.config/fish/config.fish'
 	symlink 'shell/tacklebox.fish',       '.config/fish/tacklebox.fish'
