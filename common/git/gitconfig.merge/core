@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.dotfiles/git/gitignore
+  excludesfile = ~/.dotfiles/common/git/gitignore
   editor = /usr/bin/nano
 [push]
   default = simple
