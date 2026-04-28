@@ -1,0 +1,12 @@
+image: alpine/latest
+packages:
+  - hut
+oauth: pages.sr.ht/PAGES:RW
+sources:
+  - https://github.com/urdh/dotfiles#gh-pages
+
+tasks:
+  - package: |
+      tar -C dotfiles -czf pages.tar.gz index.html
+  - upload: |
+      hut pages publish -d projects.sigurdhsson.org -s dotfiles pages.tar.gz
